@@ -1,10 +1,9 @@
-import Quote from "./components/Quote";
-import Home from "./pages/Home/Home";
+import Quote from "./components/Quote/Quote";
 
 function App() {
   return (
     <div className="App">
-      <Quote/> 
+      <Quote />
     </div>
   );
 }
