@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import React, { useState } from "react";
 
 function AddQuotes() {
@@ -13,7 +15,7 @@ function AddQuotes() {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // You can perform any additional actions with the author and quote here
     // Send them to an API or handle them as needed
@@ -22,6 +24,14 @@ function AddQuotes() {
     ).textContent = `Author: ${author}, Quote: ${quote}`;
     setAuthor("");
     setQuote("");
+    console.log(event.target.author.value);
+    console.log(event.target.quote.value);
+
+    const response = await axios.post("http://localhost:8080", {
+      a: author,
+      q: quote,
+    });
+    console.log(response);
   };
 
   return (

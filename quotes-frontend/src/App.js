@@ -1,9 +1,11 @@
-import Home from "./pages/Home/Home";
+// import Home from "./pages/Home/Home";
+import AddQuotes from "./pages/AddQuotes/AddQuotes";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      {/* <Home /> */}
+      <AddQuotes />
     </div>
   );
 }
