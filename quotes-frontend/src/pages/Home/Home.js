@@ -9,37 +9,45 @@ import {
 } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import "./Home.scss";
 
+const icons = [
+  "fa-solid fa-heart",
+  "fa-solid fa-star",
+  "fa-solid fa-wand-magic-sparkles",
+  "fa-solid fa-pen-nib",
+  "fa-solid fa-face-smile",
+];
+
 const data = [
-  { type: "life", quote: "abc", author: "author", y: 1, x: 1 },
-  { type: "life", quote: "abc", author: "author", y: 2, x: 1 },
-  { type: "life", quote: "abc", author: "author", y: 3, x: 1 },
-  { type: "life", quote: "abc", author: "author", y: 4, x: 1 },
-  { type: "life", quote: "abc", author: "author", y: 5, x: 1 },
-  { type: "life", quote: "abc", author: "author", y: 1, x: 2 },
-  { type: "life", quote: "abc", author: "author", y: 2, x: 2 },
-  { type: "life", quote: "abc", author: "author", y: 3, x: 2 },
-  { type: "life", quote: "abc", author: "author", y: 4, x: 2 },
-  { type: "life", quote: "abc", author: "author", y: 5, x: 2 },
-  { type: "life", quote: "abc", author: "author", y: 1, x: 3 },
-  { type: "life", quote: "abc", author: "author", y: 2, x: 3 },
-  { type: "life", quote: "abc", author: "author", y: 3, x: 3 },
-  { type: "life", quote: "abc", author: "author", y: 4, x: 3 },
-  { type: "life", quote: "abc", author: "author", y: 5, x: 3 },
-  { type: "life", quote: "abc", author: "author", y: 1, x: 4 },
-  { type: "life", quote: "abc", author: "author", y: 2, x: 4 },
-  { type: "life", quote: "abc", author: "author", y: 3, x: 4 },
-  { type: "life", quote: "abc", author: "author", y: 4, x: 4 },
-  { type: "life", quote: "abc", author: "author", y: 5, x: 4 },
-  { type: "life", quote: "abc", author: "author", y: 1, x: 5 },
-  { type: "life", quote: "abc", author: "author", y: 2, x: 5 },
-  { type: "life", quote: "abc", author: "author", y: 3, x: 5 },
-  { type: "life", quote: "abc", author: "author", y: 4, x: 5 },
-  { type: "life", quote: "abc", author: "author", y: 5, x: 5 },
-  { type: "life", quote: "abc", author: "author", y: 1, x: 6 },
-  { type: "life", quote: "abc", author: "author", y: 2, x: 6 },
-  { type: "life", quote: "abc", author: "author", y: 3, x: 6 },
-  { type: "life", quote: "abc", author: "author", y: 4, x: 6 },
-  { type: "life", quote: "abc", author: "author", y: 5, x: 6 },
+  { quote: "abc", author: "author", y: 1, x: 1 },
+  { quote: "abc", author: "author", y: 2, x: 1 },
+  { quote: "abc", author: "author", y: 3, x: 1 },
+  { quote: "abc", author: "author", y: 4, x: 1 },
+  { quote: "abc", author: "author", y: 5, x: 1 },
+  { quote: "abc", author: "author", y: 1, x: 2 },
+  { quote: "abc", author: "author", y: 2, x: 2 },
+  { quote: "abc", author: "author", y: 3, x: 2 },
+  { quote: "abc", author: "author", y: 4, x: 2 },
+  { quote: "abc", author: "author", y: 5, x: 2 },
+  { quote: "abc", author: "author", y: 1, x: 3 },
+  { quote: "abc", author: "author", y: 2, x: 3 },
+  { quote: "abc", author: "author", y: 3, x: 3 },
+  { quote: "abc", author: "author", y: 4, x: 3 },
+  { quote: "abc", author: "author", y: 5, x: 3 },
+  { quote: "abc", author: "author", y: 1, x: 4 },
+  { quote: "abc", author: "author", y: 2, x: 4 },
+  { quote: "abc", author: "author", y: 3, x: 4 },
+  { quote: "abc", author: "author", y: 4, x: 4 },
+  { quote: "abc", author: "author", y: 5, x: 4 },
+  { quote: "abc", author: "author", y: 1, x: 5 },
+  { quote: "abc", author: "author", y: 2, x: 5 },
+  { quote: "abc", author: "author", y: 3, x: 5 },
+  { quote: "abc", author: "author", y: 4, x: 5 },
+  { quote: "abc", author: "author", y: 5, x: 5 },
+  { quote: "abc", author: "author", y: 1, x: 6 },
+  { quote: "abc", author: "author", y: 2, x: 6 },
+  { quote: "abc", author: "author", y: 3, x: 6 },
+  { quote: "abc", author: "author", y: 4, x: 6 },
+  { quote: "abc", author: "author", y: 5, x: 6 },
 ];
 
 function Home() {
@@ -52,13 +60,16 @@ function Home() {
   const containerRef = useRef();
 
   const createTableView = () => {
+    const getRandomType = () => icons[Math.floor(Math.random() * icons.length)];
+
     for (let i = 0; i < data.length; i += 1) {
       const content = `
-        <div
+      <div
+        id="${i}"
         class="element"
         style="background-color: rgba(0,127,127,${Math.random() * 0.5 + 0.25})"
       >
-        <div class="symbol">${data[i].type}</div>
+        <div class="symbol"><i class="${getRandomType()}"></i></div>
         <div class="details">
           ${data[i].author}
         </div>
@@ -66,6 +77,9 @@ function Home() {
 
       const element = document.createElement("div");
       element.innerHTML = content;
+      element.addEventListener("pointerdown", () => {
+        console.log(data);
+      });
 
       const objectCSS = new CSS3DObject(element);
       objectCSS.position.x = Math.random() * 4000 - 2000;
@@ -75,10 +89,8 @@ function Home() {
 
       objects.current.push(objectCSS);
 
-      //
-
       const object = new THREE.Object3D();
-      object.position.x = data[i].x * 140 - 1330;
+      object.position.x = data[i].x * 140 - 500;
       object.position.y = -(data[i].y * 180) + 990;
 
       targets.current.table.push(object);
@@ -176,6 +188,9 @@ function Home() {
 
   function render3D() {
     renderer.current.render(scene.current, camera.current);
+    document.getElementById(0).addEventListener("click", () => {
+      console.log("hgjg");
+    });
   }
 
   useEffect(() => {
