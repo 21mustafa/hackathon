@@ -3,7 +3,9 @@
 .header {
   margin-bottom: 4rem;
   display: flex;
-  background-color: rgb(82, 197, 197);
+  background-image: linear-gradient(rgb(82, 197, 197), rgb(228, 181, 242));
+
+  // background-color: rgb(82, 197, 197);
   font-family: "Pacifico";
 
   &__logo {
