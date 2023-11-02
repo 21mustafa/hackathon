@@ -1,8 +1,9 @@
+import Quote from "./components/Quote/Quote";
 
 function App() {
   return (
     <div className="App">
-      test
+      <Quote />
     </div>
   );
 }
