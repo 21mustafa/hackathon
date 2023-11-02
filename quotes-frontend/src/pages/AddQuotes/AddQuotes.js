@@ -38,7 +38,9 @@ function AddQuotes() {
   return (
     <div>
       <form className="form" id="QuoteForm" onSubmit={handleSubmit}>
-        <label htmlFor="author">Author</label>
+        <label className="form__label" htmlFor="author">
+          Author
+        </label>
         <input
           className="form__input"
           type="text"
@@ -47,7 +49,9 @@ function AddQuotes() {
           value={author}
           onChange={handleInputChange}
         />
-        <label htmlFor="quote">Quote</label>
+        <label className="form__label" htmlFor="quote">
+          Quote
+        </label>
         <input
           className="form__input"
           type="text"
@@ -56,7 +60,9 @@ function AddQuotes() {
           value={quote}
           onChange={handleInputChange}
         />
-        <button type="submit">Submit</button>
+        <button className="form__button" type="submit">
+          Submit
+        </button>
       </form>
       <p id="result"></p>
     </div>
