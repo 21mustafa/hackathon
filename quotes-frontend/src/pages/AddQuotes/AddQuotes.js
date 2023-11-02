@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./AddQuotes.scss";
 
 import React, { useState } from "react";
 
@@ -36,9 +37,10 @@ function AddQuotes() {
 
   return (
     <div>
-      <form id="QuoteForm" onSubmit={handleSubmit}>
+      <form className="form" id="QuoteForm" onSubmit={handleSubmit}>
         <label htmlFor="author">Author</label>
         <input
+          className="form__input"
           type="text"
           id="author"
           name="author"
@@ -47,6 +49,7 @@ function AddQuotes() {
         />
         <label htmlFor="quote">Quote</label>
         <input
+          className="form__input"
           type="text"
           id="quote"
           name="quote"
